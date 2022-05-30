@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  nginx:
+    image: ryszol/nginx-fc:latest
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/usr/share/nginx/html
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test
+    volumes:
+      - ./data:/var/lib/mysql
